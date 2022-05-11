@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum kit</title>
+    <link rel="stylesheet" href="drum.css">
+</head>
+<body>
+
+    <img src="https://images.unsplash.com/photo-1561125623-f1d3e802731a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTEyfHxkcnVtfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="">
+    
+    <h1>hi</h1>
+
+    <div class="keys">
+        <div data-key="65" class="key" id="65">
+            <kbd>A</kbd>
+            <span class="sound">CLAP</span>
+        </div>
+        <div data-key="83" class="key" id="83">
+            <kbd>S</kbd>
+            <span class="sound">HIHAT</span>
+        </div>
+        <div data-key="68" class="key" id="68">
+            <kbd>D</kbd>
+            <span class="sound">KICK</span>
+        </div>
+        <div data-key="70" class="key" id="70">
+            <kbd>F</kbd>
+            <span class="sound">CYMBALS</span>
+        </div>
+        <div data-key="71" class="key" id="71">
+            <kbd>G</kbd>
+            <span class="sound">BOOM</span>
+        </div>
+        <div data-key="72" class="key" id="72">
+            <kbd>H</kbd>
+            <span class="sound">RIDE</span>
+        </div>
+        <div data-key="74" class="key" id="74">
+            <kbd>J</kbd>
+            <span class="sound">SNARE</span>
+        </div>
+        <div data-key="75" class="key" id="75">
+            <kbd>K</kbd>
+            <span class="sound">TOM</span>
+        </div>
+        <div data-key="76" class="key" id="76">
+            <kbd>L</kbd>
+            <span class="sound">TIMBALS</span>
+        </div>
+    </div>
+
+    <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Kawai%20R50/20[kb]CLAP_1.wav.mp3" data-key="65" ></audio>
+    <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/STYLE%20KITS%20(Hip%20Hop,%20Etc)/Electronic%20Jazz%20Kit/14[kb]HIHAT01.wav.mp3" data-key="83"></audio>
+    <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Kicks/12[kb]ekick.wav.mp3" data-key="68"></audio>
+    <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Cymbals/200[kb]big_china_cym.wav.mp3" data-key="70"></audio>
+    <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Kicks/96[kb]BOOM.wav.mp3" data-key="71"></audio>
+    <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Rides/293[kb]Ride_02.1-vs.wav.mp3" data-key="72"></audio>
+    <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/909%20Extended/14[kb]909-Snare-T7T0SA.wav.mp3" data-key="74"></audio>
+    <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Toms/37[kb]distortotom.wav.mp3" data-key="75"></audio>
+    <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Timbales/146[kb]TIMBALES_4.WAV.mp3" data-key="76"></audio>
+
+
+    <script>
+
+        function playsound(e){
+            
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+            
+            var id = Number(this.id)
+
+            const audio2 = document.querySelector(`audio[data-key="${id}"]`)
+            const key2 = document.querySelector(`.key[data-key="${id}"]`)
+
+            const mainAudio = audio || audio2
+            const mainKey = key || key2
+
+            if(!mainAudio) return
+
+            mainKey.style.animation = "mynewmove .1s";
+
+            setTimeout(()=>{mainKey.style.animation = ""},100)
+
+            mainAudio.currentTime = 0
+            mainAudio.play()
+        }
+
+        window.addEventListener("keydown", playsound)
+
+        document.getElementById('65').addEventListener('click', playsound)
+
+        document.getElementById('83').addEventListener('click', playsound)
+
+        document.getElementById('68').addEventListener('click', playsound)
+
+        document.getElementById('70').addEventListener('click', playsound)
+
+        document.getElementById('71').addEventListener('click', playsound)
+
+        document.getElementById('72').addEventListener('click', playsound)
+
+        document.getElementById('74').addEventListener('click', playsound)
+
+        document.getElementById('75').addEventListener('click', playsound)
+
+        document.getElementById('76').addEventListener('click', playsound)
+
+    </script>
+
+
+</body>
+</html>
